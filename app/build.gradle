@@ -7,15 +7,6 @@ android {
     namespace 'com.example.cicdgithubdemo'
     compileSdk 33
 
-    signingConfigs {
-        release {
-            
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
-        }
-    }
 
     defaultConfig {
         applicationId "com.example.cicdgithubdemo"
@@ -25,6 +16,16 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
     }
 
     buildTypes {
@@ -40,6 +41,25 @@ android {
             debuggable true
             minifyEnabled false
             shrinkResources false
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+
+        production {
+            versionNameSuffix ".prod"
+            buildConfigField "String", "BASE_URL", BASE_URL_PRODUCTION
+        }
+
+        uat {
+            versionNameSuffix ".uat"
+            buildConfigField "String", "BASE_URL", BASE_URL_UAT
+        }
+
+        local {
+            versionNameSuffix ".local"
+            buildConfigField "String", "BASE_URL", BASE_URL_LOCAL
         }
     }
     compileOptions {
