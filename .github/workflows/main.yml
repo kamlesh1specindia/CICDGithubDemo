@@ -49,9 +49,9 @@ jobs:
       - name: Build prod
         run: ./gradlew assembleRelease
         env:
-          SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
 
 
       # Build APK from given path
